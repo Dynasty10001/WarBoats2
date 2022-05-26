@@ -3,9 +3,10 @@ package com.example.cst143warboats;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 
-public class PlayGame extends AppCompatActivity {
+public class PlayGame extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton ib1;
     private ImageButton ib2;
@@ -142,7 +143,267 @@ public class PlayGame extends AppCompatActivity {
         ib63 = findViewById(R.id.ib63);
         ib64 = findViewById(R.id.ib64);
 
+        ib1.setOnClickListener(this);
+        ib2.setOnClickListener(this);
+        ib3.setOnClickListener(this);
+        ib4.setOnClickListener(this);
+        ib5.setOnClickListener(this);
+        ib6.setOnClickListener(this);
+        ib7.setOnClickListener(this);
+        ib8.setOnClickListener(this);
+        ib9.setOnClickListener(this);
+        ib10.setOnClickListener(this);
+        ib11.setOnClickListener(this);
+        ib12.setOnClickListener(this);
+        ib13.setOnClickListener(this);
+        ib14.setOnClickListener(this);
+        ib15.setOnClickListener(this);
+        ib16.setOnClickListener(this);
+        ib17.setOnClickListener(this);
+        ib18.setOnClickListener(this);
+        ib19.setOnClickListener(this);
+        ib20.setOnClickListener(this);
+        ib21.setOnClickListener(this);
+        ib22.setOnClickListener(this);
+        ib23.setOnClickListener(this);
+        ib24.setOnClickListener(this);
+        ib25.setOnClickListener(this);
+        ib26.setOnClickListener(this);
+        ib27.setOnClickListener(this);
+        ib28.setOnClickListener(this);
+        ib29.setOnClickListener(this);
+        ib30.setOnClickListener(this);
+        ib31.setOnClickListener(this);
+        ib32.setOnClickListener(this);
+        ib33.setOnClickListener(this);
+        ib34.setOnClickListener(this);
+        ib35.setOnClickListener(this);
+        ib36.setOnClickListener(this);
+        ib37.setOnClickListener(this);
+        ib38.setOnClickListener(this);
+        ib39.setOnClickListener(this);
+        ib40.setOnClickListener(this);
+        ib41.setOnClickListener(this);
+        ib42.setOnClickListener(this);
+        ib43.setOnClickListener(this);
+        ib44.setOnClickListener(this);
+        ib45.setOnClickListener(this);
+        ib46.setOnClickListener(this);
+        ib47.setOnClickListener(this);
+        ib48.setOnClickListener(this);
+        ib49.setOnClickListener(this);
+        ib50.setOnClickListener(this);
+        ib51.setOnClickListener(this);
+        ib52.setOnClickListener(this);
+        ib53.setOnClickListener(this);
+        ib54.setOnClickListener(this);
+        ib55.setOnClickListener(this);
+        ib56.setOnClickListener(this);
+        ib57.setOnClickListener(this);
+        ib58.setOnClickListener(this);
+        ib59.setOnClickListener(this);
+        ib60.setOnClickListener(this);
+        ib61.setOnClickListener(this);
+        ib62.setOnClickListener(this);
+        ib63.setOnClickListener(this);
+        ib64.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.ib1:
+                ib1.setImageResource();
+                break;
+            case R.id.ib2:
+                ib2.setImageResource();
+                break;
+            case R.id.ib3:
+                ib3.setImageResource();
+                break;
+            case R.id.ib4:
+                ib4.setImageResource();
+                break;
+            case R.id.ib5:
+                ib5.setImageResource();
+                break;
+            case R.id.ib6:
+                ib6.setImageResource();
+                break;
+            case R.id.ib7:
+                ib7.setImageResource();
+                break;
+            case R.id.ib8:
+                ib8.setImageResource();
+                break;
+            case R.id.ib9:
+                ib9.setImageResource();
+                break;
+            case R.id.ib10:
+                ib10.setImageResource();
+                break;
+            case R.id.ib11:
+                ib11.setImageResource();
+                break;
+            case R.id.ib12:
+                ib12.setImageResource();
+                break;
+            case R.id.ib13:
+                ib13.setImageResource();
+                break;
+            case R.id.ib14:
+                ib14.setImageResource();
+                break;
+            case R.id.ib15:
+                ib15.setImageResource();
+                break;
+            case R.id.ib16:
+                ib16.setImageResource();
+                break;
+            case R.id.ib17:
+                ib17.setImageResource();
+                break;
+            case R.id.ib18:
+                ib18.setImageResource();
+                break;
+            case R.id.ib19:
+                ib19.setImageResource();
+                break;
+            case R.id.ib20:
+                ib20.setImageResource();
+                break;
+            case R.id.ib21:
+                ib21.setImageResource();
+                break;
+            case R.id.ib22:
+                ib22.setImageResource();
+                break;
+            case R.id.ib23:
+                ib23.setImageResource();
+                break;
+            case R.id.ib24:
+                ib24.setImageResource();
+                break;
+            case R.id.ib25:
+                ib25.setImageResource();
+                break;
+            case R.id.ib26:
+                ib26.setImageResource();
+                break;
+            case R.id.ib27:
+                ib27.setImageResource();
+                break;
+            case R.id.ib28:
+                ib28.setImageResource();
+                break;
+            case R.id.ib29:
+                ib29.setImageResource();
+                break;
+            case R.id.ib30:
+                ib30.setImageResource();
+                break;
+            case R.id.ib31:
+                ib31.setImageResource();
+                break;
+            case R.id.ib32:
+                ib32.setImageResource();
+                break;
+            case R.id.ib33:
+                ib33.setImageResource();
+                break;
+            case R.id.ib34:
+                ib34.setImageResource();
+                break;
+            case R.id.ib35:
+                ib35.setImageResource();
+                break;
+            case R.id.ib36:
+                ib36.setImageResource();
+                break;
+            case R.id.ib37:
+                ib37.setImageResource();
+                break;
+            case R.id.ib38:
+                ib38.setImageResource();
+                break;
+            case R.id.ib39:
+                ib39.setImageResource();
+                break;
+            case R.id.ib40:
+                ib40.setImageResource();
+                break;
+            case R.id.ib41:
+                ib41.setImageResource();
+                break;
+            case R.id.ib42:
+                ib42.setImageResource();
+                break;
+            case R.id.ib43:
+                ib43.setImageResource();
+                break;
+            case R.id.ib44:
+                ib44.setImageResource();
+                break;
+            case R.id.ib45:
+                ib45.setImageResource();
+                break;
+            case R.id.ib46:
+                ib46.setImageResource();
+                break;
+            case R.id.ib47:
+                ib47.setImageResource();
+                break;
+            case R.id.ib48:
+                ib48.setImageResource();
+                break;
+            case R.id.ib49:
+                ib49.setImageResource();
+                break;
+            case R.id.ib50:
+                ib50.setImageResource();
+                break;
+            case R.id.ib51:
+                ib51.setImageResource();
+                break;
+            case R.id.ib52:
+                ib52.setImageResource();
+                break;
+            case R.id.ib53:
+                ib53.setImageResource();
+                break;
+            case R.id.ib54:
+                ib54.setImageResource();
+                break;
+            case R.id.ib55:
+                ib55.setImageResource();
+                break;
+            case R.id.ib56:
+                ib56.setImageResource();
+                break;
+            case R.id.ib57:
+                ib57.setImageResource();
+                break;
+            case R.id.ib58:
+                ib58.setImageResource();
+                break;
+            case R.id.ib59:
+                ib59.setImageResource();
+                break;
+            case R.id.ib60:
+                ib60.setImageResource();
+                break;
+            case R.id.ib61:
+                ib61.setImageResource();
+                break;
+            case R.id.ib62:
+                ib62.setImageResource();
+                break;
+            case R.id.ib63:
+                ib63.setImageResource();
+                break;
+            case R.id.ib64:
+                ib64.setImageResource();
+                break;
     }
 }
