@@ -30,14 +30,6 @@ public class MainActivity extends AppCompatActivity {
     ImageButton ibCamera;
     Button btnPlayGame;
 
-    Drawable image;
-
-    // Defining Buttons
-    private Button storage, camera;
-
-    // Defining Permission codes.
-    // We can give any value
-    // but unique for each permission.
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
 
@@ -51,31 +43,12 @@ public class MainActivity extends AppCompatActivity {
             ibCamera = findViewById(R.id.ibCamera);;
             btnPlayGame = findViewById(R.id.btnPlayGame);;
 
-        storage = findViewById(R.id.storage);
-        camera = findViewById(R.id.camera);
-
-        // Set Buttons on Click Listeners
-        storage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
-            }
-        });
-
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
-            }
-        });
-
         ibCamera.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v)
             {
+
                 checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
                 if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
@@ -100,20 +73,21 @@ public class MainActivity extends AppCompatActivity {
     // Function to check and request permission.
     public boolean checkPermission(String permission, int requestCode)
     {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED) {
-            return true;
 
-        }
-        else {
-            // Requesting the permission
-            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
             if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             }
             else {
-                return false;
+                // Requesting the permission
+                ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
+                if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-        }
+
     }
 
     // This function is called when the user accepts or decline the permission.
