@@ -129,11 +129,6 @@ public class MainActivity extends AppCompatActivity {
 //            this.startActivity(intent);
         }
 
-        public void camera() {
-
-
-        }
-
         static final int REQUEST_IMAGE_CAPTURE = 1;
 
         private void dispatchTakePictureIntent() {
