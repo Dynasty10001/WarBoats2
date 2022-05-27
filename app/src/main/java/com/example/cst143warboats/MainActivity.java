@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         public void PlayGame() {
             Intent intent = new Intent(this, PlayGame.class);
             intent.putExtra("name", etName.getText().toString());
-            intent.putExtra("img", ivPic.getDrawable().toString());
+//            intent.putExtra("img", ivPic.getDrawable().toString());
             this.startActivity(intent);
         }
 

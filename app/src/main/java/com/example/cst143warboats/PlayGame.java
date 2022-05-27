@@ -27,8 +27,8 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
     //TODO Look Into SVG (Font Awesome?)
 
-    Drawable hit = getResources().getDrawable(R.drawable.hit);
-    Drawable miss = getResources().getDrawable(R.drawable.miss);
+    Drawable hit = getResources().getDrawable(R.drawable.ic_explosion);
+    Drawable miss = getResources().getDrawable(R.drawable.ic_sploosh);
 
     private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib18,ib19,ib20,ib21,ib22,ib23,ib24,ib25,ib26,ib27,ib28,ib29,ib30,ib31,ib32,ib33,ib34,ib35,ib36,ib37,ib38,ib39,ib40,
             ib41,ib42,ib43,ib44,ib45,ib46,ib47,ib48,ib49,ib50,ib51,ib52,ib53,ib54,ib55,ib56,ib57,ib58,ib59,ib60,ib61,ib62,ib63,ib64;
