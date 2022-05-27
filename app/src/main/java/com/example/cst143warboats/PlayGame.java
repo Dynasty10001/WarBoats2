@@ -13,6 +13,12 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     ImageButton[] ShipM = new ImageButton[3];
     ImageButton[] ShipL = new ImageButton[4];
 
+    int shotsLeft = 30;
+
+    boolean ShipSSunk = false;
+    boolean ShipMSunk = false;
+    boolean ShipLSunk = false;
+
     Drawable hit = getResources().getDrawable(R.drawable.hit);
     Drawable miss = getResources().getDrawable(R.drawable.miss);
 
@@ -371,6 +377,8 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
+        shotsLeft--;
+
         for (int i = 0; i<Buttons.length; i++)
         {
                  if(v.getId() == Buttons[i].getId())
@@ -380,10 +388,12 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                  }
         }
 
+        if(ShipSSunk && ShipMSunk && ShipLSunk){
 
-
-
-
+        }
+        if(!ShipSSunk){ checkShipS(); }
+        if(!ShipMSunk){ checkShipM(); }
+        if(!ShipLSunk){ checkShipL(); }
 
     }
 
@@ -391,22 +401,19 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     {
 
         for (ImageButton i: ShipS) {
-            if (i == ib)
-            {
+            if (i == ib) {
                 ib.setImageDrawable(hit);
                 return true;
             }
         }
         for (ImageButton i: ShipM) {
-            if (i == ib)
-            {
+            if (i == ib) {
                 ib.setImageDrawable(hit);
                 return true;
             }
         }
         for (ImageButton i: ShipL) {
-            if (i == ib)
-            {
+            if (i == ib) {
                 ib.setImageDrawable(hit);
                 return true;
             }
@@ -414,7 +421,29 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         ib.setImageDrawable(miss);
         return false;
+    }
 
+    public void checkShipS()
+    {
+        for (ImageButton ib: ShipS){
+            if (ib.isClickable()) { return; }
+        }
+        ShipSSunk = true;
+    }
 
+    public void checkShipM()
+    {
+        for (ImageButton ib: ShipM){
+            if (ib.isClickable()) { return; }
+        }
+        ShipMSunk = true;
+    }
+
+    public void checkShipL()
+    {
+        for (ImageButton ib: ShipL){
+            if (ib.isClickable()) { return; }
+        }
+        ShipLSunk = true;
     }
 }
