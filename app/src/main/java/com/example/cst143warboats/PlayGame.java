@@ -287,7 +287,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         for (int i : tempM) { locations[i] = -1; }
 
-        if (b2){
+        if (b3){
             int l = 9 - tempS.length;
             boolean b = true;
             //Horizontal
