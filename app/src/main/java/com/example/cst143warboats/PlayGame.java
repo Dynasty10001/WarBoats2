@@ -2,12 +2,18 @@ package com.example.cst143warboats;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
+
+    TextView tvName;
+    TextView tvBest;
+    TextView tvRemain;
 
     ImageButton[] ShipS = new ImageButton[2];
     ImageButton[] ShipM = new ImageButton[3];
@@ -19,73 +25,14 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     boolean ShipMSunk = false;
     boolean ShipLSunk = false;
 
+    //TODO Look Into SVG (Font Awesome?)
+
     Drawable hit = getResources().getDrawable(R.drawable.hit);
     Drawable miss = getResources().getDrawable(R.drawable.miss);
 
-    private ImageButton ib1;
-    private ImageButton ib2;
-    private ImageButton ib3;
-    private ImageButton ib4;
-    private ImageButton ib5;
-    private ImageButton ib6;
-    private ImageButton ib7;
-    private ImageButton ib8;
-    private ImageButton ib9;
-    private ImageButton ib10;
-    private ImageButton ib11;
-    private ImageButton ib12;
-    private ImageButton ib13;
-    private ImageButton ib14;
-    private ImageButton ib15;
-    private ImageButton ib16;
-    private ImageButton ib17;
-    private ImageButton ib18;
-    private ImageButton ib19;
-    private ImageButton ib20;
-    private ImageButton ib21;
-    private ImageButton ib22;
-    private ImageButton ib23;
-    private ImageButton ib24;
-    private ImageButton ib25;
-    private ImageButton ib26;
-    private ImageButton ib27;
-    private ImageButton ib28;
-    private ImageButton ib29;
-    private ImageButton ib30;
-    private ImageButton ib31;
-    private ImageButton ib32;
-    private ImageButton ib33;
-    private ImageButton ib34;
-    private ImageButton ib35;
-    private ImageButton ib36;
-    private ImageButton ib37;
-    private ImageButton ib38;
-    private ImageButton ib39;
-    private ImageButton ib40;
-    private ImageButton ib41;
-    private ImageButton ib42;
-    private ImageButton ib43;
-    private ImageButton ib44;
-    private ImageButton ib45;
-    private ImageButton ib46;
-    private ImageButton ib47;
-    private ImageButton ib48;
-    private ImageButton ib49;
-    private ImageButton ib50;
-    private ImageButton ib51;
-    private ImageButton ib52;
-    private ImageButton ib53;
-    private ImageButton ib54;
-    private ImageButton ib55;
-    private ImageButton ib56;
-    private ImageButton ib57;
-    private ImageButton ib58;
-    private ImageButton ib59;
-    private ImageButton ib60;
-    private ImageButton ib61;
-    private ImageButton ib62;
-    private ImageButton ib63;
-    private ImageButton ib64;
+    private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib18,ib19,ib20,ib21,ib22,ib23,ib24,ib25,ib26,ib27,ib28,ib29,ib30,ib31,ib32,ib33,ib34,ib35,ib36,ib37,ib38,ib39,ib40,
+            ib41,ib42,ib43,ib44,ib45,ib46,ib47,ib48,ib49,ib50,ib51,ib52,ib53,ib54,ib55,ib56,ib57,ib58,ib59,ib60,ib61,ib62,ib63,ib64;
+
 
     ImageButton[] Buttons = {ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib18,ib19,ib20,ib21,ib22,ib23,ib24,ib25,ib26,ib27,ib28,ib29,ib30,ib31,ib32,ib33,ib34,ib35,ib36,ib37,ib38,ib39,ib40,
             ib41,ib42,ib43,ib44,ib45,ib46,ib47,ib48,ib49,ib50,ib51,ib52,ib53,ib54,ib55,ib56,ib57,ib58,ib59,ib60,ib61,ib62,ib63,ib64};
@@ -94,6 +41,18 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        String name = b.getString("name");
+
+        tvBest = findViewById(R.id.tvBest);
+        tvName = findViewById(R.id.tvName);
+        tvRemain = findViewById(R.id.tvRemain);
+
+        tvName.setText("Capn' " + name);
+        tvRemain.setText("Number of Shots Left: " + shotsLeft);
 
         Buttons[0] = findViewById(R.id.ib1);
         Buttons[1] = findViewById(R.id.ib2);
@@ -171,7 +130,6 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[8].setOnClickListener(this);
         Buttons[9].setOnClickListener(this);
         Buttons[10].setOnClickListener(this);
-        Buttons[10].setOnClickListener(this);
         Buttons[11].setOnClickListener(this);
         Buttons[12].setOnClickListener(this);
         Buttons[13].setOnClickListener(this);
@@ -181,7 +139,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[17].setOnClickListener(this);
         Buttons[18].setOnClickListener(this);
         Buttons[19].setOnClickListener(this);
-        Buttons[20].setOnClickListener(this);
+        Buttons[10].setOnClickListener(this);
         Buttons[21].setOnClickListener(this);
         Buttons[22].setOnClickListener(this);
         Buttons[23].setOnClickListener(this);
@@ -191,7 +149,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[27].setOnClickListener(this);
         Buttons[28].setOnClickListener(this);
         Buttons[29].setOnClickListener(this);
-        Buttons[30].setOnClickListener(this);
+        Buttons[20].setOnClickListener(this);
         Buttons[31].setOnClickListener(this);
         Buttons[32].setOnClickListener(this);
         Buttons[33].setOnClickListener(this);
@@ -201,7 +159,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[37].setOnClickListener(this);
         Buttons[38].setOnClickListener(this);
         Buttons[39].setOnClickListener(this);
-        Buttons[40].setOnClickListener(this);
+        Buttons[30].setOnClickListener(this);
         Buttons[41].setOnClickListener(this);
         Buttons[42].setOnClickListener(this);
         Buttons[43].setOnClickListener(this);
@@ -211,7 +169,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[47].setOnClickListener(this);
         Buttons[48].setOnClickListener(this);
         Buttons[49].setOnClickListener(this);
-        Buttons[50].setOnClickListener(this);
+        Buttons[40].setOnClickListener(this);
         Buttons[51].setOnClickListener(this);
         Buttons[52].setOnClickListener(this);
         Buttons[53].setOnClickListener(this);
@@ -221,9 +179,10 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[57].setOnClickListener(this);
         Buttons[58].setOnClickListener(this);
         Buttons[59].setOnClickListener(this);
-        Buttons[60].setOnClickListener(this);
+        Buttons[50].setOnClickListener(this);
         Buttons[61].setOnClickListener(this);
         Buttons[62].setOnClickListener(this);
+        Buttons[63].setOnClickListener(this);
 
         RandomiseLocation();
 
@@ -378,6 +337,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
 
         shotsLeft--;
+        tvRemain.setText("Number of Shots Left: " + shotsLeft);
 
         for (int i = 0; i<Buttons.length; i++)
         {
