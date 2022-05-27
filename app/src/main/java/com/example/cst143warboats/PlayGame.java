@@ -2,11 +2,19 @@ package com.example.cst143warboats;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
+
+    ImageButton[] ShipS = new ImageButton[2];
+    ImageButton[] ShipM = new ImageButton[3];
+    ImageButton[] ShipL = new ImageButton[4];
+
+    Drawable hit = getResources().getDrawable(R.drawable.hit);
+    Drawable miss = getResources().getDrawable(R.drawable.miss);
 
     private ImageButton ib1;
     private ImageButton ib2;
@@ -73,337 +81,340 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     private ImageButton ib63;
     private ImageButton ib64;
 
+    ImageButton[] Buttons = {ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib18,ib19,ib20,ib21,ib22,ib23,ib24,ib25,ib26,ib27,ib28,ib29,ib30,ib31,ib32,ib33,ib34,ib35,ib36,ib37,ib38,ib39,ib40,
+            ib41,ib42,ib43,ib44,ib45,ib46,ib47,ib48,ib49,ib50,ib51,ib52,ib53,ib54,ib55,ib56,ib57,ib58,ib59,ib60,ib61,ib62,ib63,ib64};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
-        ib1 = findViewById(R.id.ib1);
-        ib2 = findViewById(R.id.ib2);
-        ib3 = findViewById(R.id.ib3);
-        ib4 = findViewById(R.id.ib4);
-        ib5 = findViewById(R.id.ib5);
-        ib6 = findViewById(R.id.ib6);
-        ib7 = findViewById(R.id.ib7);
-        ib8 = findViewById(R.id.ib8);
-        ib9 = findViewById(R.id.ib9);
-        ib10 = findViewById(R.id.ib10);
-        ib11 = findViewById(R.id.ib11);
-        ib12 = findViewById(R.id.ib12);
-        ib13 = findViewById(R.id.ib13);
-        ib14 = findViewById(R.id.ib14);
-        ib15 = findViewById(R.id.ib15);
-        ib16 = findViewById(R.id.ib16);
-        ib17 = findViewById(R.id.ib17);
-        ib18 = findViewById(R.id.ib18);
-        ib19 = findViewById(R.id.ib19);
-        ib20 = findViewById(R.id.ib20);
-        ib21 = findViewById(R.id.ib21);
-        ib22 = findViewById(R.id.ib22);
-        ib23 = findViewById(R.id.ib23);
-        ib24 = findViewById(R.id.ib24);
-        ib25 = findViewById(R.id.ib25);
-        ib26 = findViewById(R.id.ib26);
-        ib27 = findViewById(R.id.ib27);
-        ib28 = findViewById(R.id.ib28);
-        ib29 = findViewById(R.id.ib29);
-        ib30 = findViewById(R.id.ib30);
-        ib31 = findViewById(R.id.ib31);
-        ib32 = findViewById(R.id.ib32);
-        ib33 = findViewById(R.id.ib33);
-        ib34 = findViewById(R.id.ib34);
-        ib35 = findViewById(R.id.ib35);
-        ib36 = findViewById(R.id.ib36);
-        ib37 = findViewById(R.id.ib37);
-        ib38 = findViewById(R.id.ib38);
-        ib39 = findViewById(R.id.ib39);
-        ib40 = findViewById(R.id.ib40);
-        ib41 = findViewById(R.id.ib41);
-        ib42 = findViewById(R.id.ib42);
-        ib43 = findViewById(R.id.ib43);
-        ib44 = findViewById(R.id.ib44);
-        ib45 = findViewById(R.id.ib45);
-        ib46 = findViewById(R.id.ib46);
-        ib47 = findViewById(R.id.ib47);
-        ib48 = findViewById(R.id.ib48);
-        ib49 = findViewById(R.id.ib49);
-        ib50 = findViewById(R.id.ib50);
-        ib51 = findViewById(R.id.ib51);
-        ib52 = findViewById(R.id.ib52);
-        ib53 = findViewById(R.id.ib53);
-        ib54 = findViewById(R.id.ib54);
-        ib55 = findViewById(R.id.ib55);
-        ib56 = findViewById(R.id.ib56);
-        ib57 = findViewById(R.id.ib57);
-        ib58 = findViewById(R.id.ib58);
-        ib59 = findViewById(R.id.ib59);
-        ib60 = findViewById(R.id.ib60);
-        ib61 = findViewById(R.id.ib61);
-        ib62 = findViewById(R.id.ib62);
-        ib63 = findViewById(R.id.ib63);
-        ib64 = findViewById(R.id.ib64);
+        Buttons[0] = findViewById(R.id.ib1);
+        Buttons[1] = findViewById(R.id.ib2);
+        Buttons[2] = findViewById(R.id.ib3);
+        Buttons[3] = findViewById(R.id.ib4);
+        Buttons[4] = findViewById(R.id.ib5);
+        Buttons[5] = findViewById(R.id.ib6);
+        Buttons[6] = findViewById(R.id.ib7);
+        Buttons[7] = findViewById(R.id.ib8);
+        Buttons[8] = findViewById(R.id.ib9);
+        Buttons[9] = findViewById(R.id.ib10);
+        Buttons[10] = findViewById(R.id.ib11);
+        Buttons[10] = findViewById(R.id.ib12);
+        Buttons[11] = findViewById(R.id.ib13);
+        Buttons[12] = findViewById(R.id.ib14);
+        Buttons[13] = findViewById(R.id.ib15);
+        Buttons[14] = findViewById(R.id.ib16);
+        Buttons[15] = findViewById(R.id.ib17);
+        Buttons[16] = findViewById(R.id.ib18);
+        Buttons[17] = findViewById(R.id.ib19);
+        Buttons[18] = findViewById(R.id.ib20);
+        Buttons[19] = findViewById(R.id.ib21);
+        Buttons[20] = findViewById(R.id.ib22);
+        Buttons[21] = findViewById(R.id.ib23);
+        Buttons[22] = findViewById(R.id.ib24);
+        Buttons[23] = findViewById(R.id.ib25);
+        Buttons[24] = findViewById(R.id.ib26);
+        Buttons[25] = findViewById(R.id.ib27);
+        Buttons[26] = findViewById(R.id.ib28);
+        Buttons[27] = findViewById(R.id.ib29);
+        Buttons[28] = findViewById(R.id.ib30);
+        Buttons[29] = findViewById(R.id.ib31);
+        Buttons[30] = findViewById(R.id.ib32);
+        Buttons[31] = findViewById(R.id.ib33);
+        Buttons[32] = findViewById(R.id.ib34);
+        Buttons[33] = findViewById(R.id.ib35);
+        Buttons[34] = findViewById(R.id.ib36);
+        Buttons[35] = findViewById(R.id.ib37);
+        Buttons[36] = findViewById(R.id.ib38);
+        Buttons[37] = findViewById(R.id.ib39);
+        Buttons[38] = findViewById(R.id.ib40);
+        Buttons[39] = findViewById(R.id.ib41);
+        Buttons[40] = findViewById(R.id.ib42);
+        Buttons[41] = findViewById(R.id.ib43);
+        Buttons[42] = findViewById(R.id.ib44);
+        Buttons[43] = findViewById(R.id.ib45);
+        Buttons[44] = findViewById(R.id.ib46);
+        Buttons[45] = findViewById(R.id.ib47);
+        Buttons[46] = findViewById(R.id.ib48);
+        Buttons[47] = findViewById(R.id.ib49);
+        Buttons[48] = findViewById(R.id.ib50);
+        Buttons[49] = findViewById(R.id.ib51);
+        Buttons[50] = findViewById(R.id.ib52);
+        Buttons[51] = findViewById(R.id.ib53);
+        Buttons[52] = findViewById(R.id.ib54);
+        Buttons[53] = findViewById(R.id.ib55);
+        Buttons[54] = findViewById(R.id.ib56);
+        Buttons[55] = findViewById(R.id.ib57);
+        Buttons[56] = findViewById(R.id.ib58);
+        Buttons[57] = findViewById(R.id.ib59);
+        Buttons[58] = findViewById(R.id.ib60);
+        Buttons[59] = findViewById(R.id.ib61);
+        Buttons[60] = findViewById(R.id.ib62);
+        Buttons[61] = findViewById(R.id.ib63);
+        Buttons[62] = findViewById(R.id.ib64);
 
-        ib1.setOnClickListener(this);
-        ib2.setOnClickListener(this);
-        ib3.setOnClickListener(this);
-        ib4.setOnClickListener(this);
-        ib5.setOnClickListener(this);
-        ib6.setOnClickListener(this);
-        ib7.setOnClickListener(this);
-        ib8.setOnClickListener(this);
-        ib9.setOnClickListener(this);
-        ib10.setOnClickListener(this);
-        ib11.setOnClickListener(this);
-        ib12.setOnClickListener(this);
-        ib13.setOnClickListener(this);
-        ib14.setOnClickListener(this);
-        ib15.setOnClickListener(this);
-        ib16.setOnClickListener(this);
-        ib17.setOnClickListener(this);
-        ib18.setOnClickListener(this);
-        ib19.setOnClickListener(this);
-        ib20.setOnClickListener(this);
-        ib21.setOnClickListener(this);
-        ib22.setOnClickListener(this);
-        ib23.setOnClickListener(this);
-        ib24.setOnClickListener(this);
-        ib25.setOnClickListener(this);
-        ib26.setOnClickListener(this);
-        ib27.setOnClickListener(this);
-        ib28.setOnClickListener(this);
-        ib29.setOnClickListener(this);
-        ib30.setOnClickListener(this);
-        ib31.setOnClickListener(this);
-        ib32.setOnClickListener(this);
-        ib33.setOnClickListener(this);
-        ib34.setOnClickListener(this);
-        ib35.setOnClickListener(this);
-        ib36.setOnClickListener(this);
-        ib37.setOnClickListener(this);
-        ib38.setOnClickListener(this);
-        ib39.setOnClickListener(this);
-        ib40.setOnClickListener(this);
-        ib41.setOnClickListener(this);
-        ib42.setOnClickListener(this);
-        ib43.setOnClickListener(this);
-        ib44.setOnClickListener(this);
-        ib45.setOnClickListener(this);
-        ib46.setOnClickListener(this);
-        ib47.setOnClickListener(this);
-        ib48.setOnClickListener(this);
-        ib49.setOnClickListener(this);
-        ib50.setOnClickListener(this);
-        ib51.setOnClickListener(this);
-        ib52.setOnClickListener(this);
-        ib53.setOnClickListener(this);
-        ib54.setOnClickListener(this);
-        ib55.setOnClickListener(this);
-        ib56.setOnClickListener(this);
-        ib57.setOnClickListener(this);
-        ib58.setOnClickListener(this);
-        ib59.setOnClickListener(this);
-        ib60.setOnClickListener(this);
-        ib61.setOnClickListener(this);
-        ib62.setOnClickListener(this);
-        ib63.setOnClickListener(this);
-        ib64.setOnClickListener(this);
+        Buttons[0].setOnClickListener(this);
+        Buttons[1].setOnClickListener(this);
+        Buttons[2].setOnClickListener(this);
+        Buttons[3].setOnClickListener(this);
+        Buttons[4].setOnClickListener(this);
+        Buttons[5].setOnClickListener(this);
+        Buttons[6].setOnClickListener(this);
+        Buttons[7].setOnClickListener(this);
+        Buttons[8].setOnClickListener(this);
+        Buttons[9].setOnClickListener(this);
+        Buttons[10].setOnClickListener(this);
+        Buttons[10].setOnClickListener(this);
+        Buttons[11].setOnClickListener(this);
+        Buttons[12].setOnClickListener(this);
+        Buttons[13].setOnClickListener(this);
+        Buttons[14].setOnClickListener(this);
+        Buttons[15].setOnClickListener(this);
+        Buttons[16].setOnClickListener(this);
+        Buttons[17].setOnClickListener(this);
+        Buttons[18].setOnClickListener(this);
+        Buttons[19].setOnClickListener(this);
+        Buttons[20].setOnClickListener(this);
+        Buttons[21].setOnClickListener(this);
+        Buttons[22].setOnClickListener(this);
+        Buttons[23].setOnClickListener(this);
+        Buttons[24].setOnClickListener(this);
+        Buttons[25].setOnClickListener(this);
+        Buttons[26].setOnClickListener(this);
+        Buttons[27].setOnClickListener(this);
+        Buttons[28].setOnClickListener(this);
+        Buttons[29].setOnClickListener(this);
+        Buttons[30].setOnClickListener(this);
+        Buttons[31].setOnClickListener(this);
+        Buttons[32].setOnClickListener(this);
+        Buttons[33].setOnClickListener(this);
+        Buttons[34].setOnClickListener(this);
+        Buttons[35].setOnClickListener(this);
+        Buttons[36].setOnClickListener(this);
+        Buttons[37].setOnClickListener(this);
+        Buttons[38].setOnClickListener(this);
+        Buttons[39].setOnClickListener(this);
+        Buttons[40].setOnClickListener(this);
+        Buttons[41].setOnClickListener(this);
+        Buttons[42].setOnClickListener(this);
+        Buttons[43].setOnClickListener(this);
+        Buttons[44].setOnClickListener(this);
+        Buttons[45].setOnClickListener(this);
+        Buttons[46].setOnClickListener(this);
+        Buttons[47].setOnClickListener(this);
+        Buttons[48].setOnClickListener(this);
+        Buttons[49].setOnClickListener(this);
+        Buttons[50].setOnClickListener(this);
+        Buttons[51].setOnClickListener(this);
+        Buttons[52].setOnClickListener(this);
+        Buttons[53].setOnClickListener(this);
+        Buttons[54].setOnClickListener(this);
+        Buttons[55].setOnClickListener(this);
+        Buttons[56].setOnClickListener(this);
+        Buttons[57].setOnClickListener(this);
+        Buttons[58].setOnClickListener(this);
+        Buttons[59].setOnClickListener(this);
+        Buttons[60].setOnClickListener(this);
+        Buttons[61].setOnClickListener(this);
+        Buttons[62].setOnClickListener(this);
+
+        RandomiseLocation();
+
+    }
+
+    private void RandomiseLocation() {
+        //Checking horizontal or vertical orientation of ship
+
+        int[] locations = new int[64];
+        for (int i = 0; i<locations.length; i++) {
+            locations[i] = i;
+        }
+
+        int[] tempS = new int[2];
+        int[] tempM = new int[3];
+        int[] tempL = new int[4];
+
+        boolean b1 = (Math.random() > 0.5);
+        boolean b2 = (Math.random() > 0.5);
+        boolean b3 = (Math.random() > 0.5);
+
+
+        if (b1){
+            int l = 9 - tempL.length;
+            boolean b = true;
+            //Horizontal
+            do {
+                b=false;
+                int x = (int) Math.floor(Math.random() * l) + 1;
+                int y = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i<tempL.length; i++) {
+                    int temp = (y*8) + x + i;
+                    tempL[i] = temp;
+                }
+                for (int i : tempL) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+        else {
+            int l = 9 - tempL.length;
+            boolean b = true;
+            do {
+                b=false;
+                //vertical
+                int y = (int) Math.floor(Math.random() * l) + 1;
+                int x = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i < tempL.length; i++) {
+                    int temp = (y * 8) + x + (i * 8);
+                    tempL[i] = temp;
+                }
+                for (int i : tempL) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+
+        for (int i : tempL) { locations[i] = -1; }
+
+        if (b2){
+            int l = 9 - tempM.length;
+            boolean b = true;
+            //Horizontal
+            do {
+                b=false;
+                int x = (int) Math.floor(Math.random() * l) + 1;
+                int y = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i<tempM.length; i++) {
+                    int temp = (y*8) + x + i;
+                    tempM[i] = temp;
+                }
+                for (int i : tempM) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+        else {
+            int l = 9 - tempM.length;
+            boolean b = true;
+            do {
+                b=false;
+                //vertical
+                int y = (int) Math.floor(Math.random() * l) + 1;
+                int x = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i < tempM.length; i++) {
+                    int temp = (y * 8) + x + (i * 8);
+                    tempM[i] = temp;
+                }
+                for (int i : tempM) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+
+        for (int i : tempM) { locations[i] = -1; }
+
+        if (b2){
+            int l = 9 - tempS.length;
+            boolean b = true;
+            //Horizontal
+            do {
+                b=false;
+                int x = (int) Math.floor(Math.random() * l) + 1;
+                int y = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i<tempS.length; i++) {
+                    int temp = (y*8) + x + i;
+                    tempS[i] = temp;
+                }
+                for (int i : tempS) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+        else {
+            int l = 9 - tempS.length;
+            boolean b = true;
+            do {
+                b=false;
+                //vertical
+                int y = (int) Math.floor(Math.random() * l) + 1;
+                int x = (int) Math.floor(Math.random() * 8) + 1;
+                for (int i = 0; i < tempS.length; i++) {
+                    int temp = (y * 8) + x + (i * 8);
+                    tempS[i] = temp;
+                }
+                for (int i : tempS) {
+                    if (locations[i] == -1) {
+                        b = true;
+                    }
+                }
+            } while (b);
+        }
+
+        for (int i : tempS) { locations[i] = -1; }
+
+        for (int i =0; i< ShipL.length; i++) { ShipL[i] = Buttons[tempL[i]]; }
+        for (int i =0; i< ShipM.length; i++) { ShipM[i] = Buttons[tempM[i]]; }
+        for (int i =0; i< ShipS.length; i++) { ShipS[i] = Buttons[tempS[i]]; }
     }
 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.ib1:
-                ib1.setImageResource();
-                break;
-            case R.id.ib2:
-                ib2.setImageResource();
-                break;
-            case R.id.ib3:
-                ib3.setImageResource();
-                break;
-            case R.id.ib4:
-                ib4.setImageResource();
-                break;
-            case R.id.ib5:
-                ib5.setImageResource();
-                break;
-            case R.id.ib6:
-                ib6.setImageResource();
-                break;
-            case R.id.ib7:
-                ib7.setImageResource();
-                break;
-            case R.id.ib8:
-                ib8.setImageResource();
-                break;
-            case R.id.ib9:
-                ib9.setImageResource();
-                break;
-            case R.id.ib10:
-                ib10.setImageResource();
-                break;
-            case R.id.ib11:
-                ib11.setImageResource();
-                break;
-            case R.id.ib12:
-                ib12.setImageResource();
-                break;
-            case R.id.ib13:
-                ib13.setImageResource();
-                break;
-            case R.id.ib14:
-                ib14.setImageResource();
-                break;
-            case R.id.ib15:
-                ib15.setImageResource();
-                break;
-            case R.id.ib16:
-                ib16.setImageResource();
-                break;
-            case R.id.ib17:
-                ib17.setImageResource();
-                break;
-            case R.id.ib18:
-                ib18.setImageResource();
-                break;
-            case R.id.ib19:
-                ib19.setImageResource();
-                break;
-            case R.id.ib20:
-                ib20.setImageResource();
-                break;
-            case R.id.ib21:
-                ib21.setImageResource();
-                break;
-            case R.id.ib22:
-                ib22.setImageResource();
-                break;
-            case R.id.ib23:
-                ib23.setImageResource();
-                break;
-            case R.id.ib24:
-                ib24.setImageResource();
-                break;
-            case R.id.ib25:
-                ib25.setImageResource();
-                break;
-            case R.id.ib26:
-                ib26.setImageResource();
-                break;
-            case R.id.ib27:
-                ib27.setImageResource();
-                break;
-            case R.id.ib28:
-                ib28.setImageResource();
-                break;
-            case R.id.ib29:
-                ib29.setImageResource();
-                break;
-            case R.id.ib30:
-                ib30.setImageResource();
-                break;
-            case R.id.ib31:
-                ib31.setImageResource();
-                break;
-            case R.id.ib32:
-                ib32.setImageResource();
-                break;
-            case R.id.ib33:
-                ib33.setImageResource();
-                break;
-            case R.id.ib34:
-                ib34.setImageResource();
-                break;
-            case R.id.ib35:
-                ib35.setImageResource();
-                break;
-            case R.id.ib36:
-                ib36.setImageResource();
-                break;
-            case R.id.ib37:
-                ib37.setImageResource();
-                break;
-            case R.id.ib38:
-                ib38.setImageResource();
-                break;
-            case R.id.ib39:
-                ib39.setImageResource();
-                break;
-            case R.id.ib40:
-                ib40.setImageResource();
-                break;
-            case R.id.ib41:
-                ib41.setImageResource();
-                break;
-            case R.id.ib42:
-                ib42.setImageResource();
-                break;
-            case R.id.ib43:
-                ib43.setImageResource();
-                break;
-            case R.id.ib44:
-                ib44.setImageResource();
-                break;
-            case R.id.ib45:
-                ib45.setImageResource();
-                break;
-            case R.id.ib46:
-                ib46.setImageResource();
-                break;
-            case R.id.ib47:
-                ib47.setImageResource();
-                break;
-            case R.id.ib48:
-                ib48.setImageResource();
-                break;
-            case R.id.ib49:
-                ib49.setImageResource();
-                break;
-            case R.id.ib50:
-                ib50.setImageResource();
-                break;
-            case R.id.ib51:
-                ib51.setImageResource();
-                break;
-            case R.id.ib52:
-                ib52.setImageResource();
-                break;
-            case R.id.ib53:
-                ib53.setImageResource();
-                break;
-            case R.id.ib54:
-                ib54.setImageResource();
-                break;
-            case R.id.ib55:
-                ib55.setImageResource();
-                break;
-            case R.id.ib56:
-                ib56.setImageResource();
-                break;
-            case R.id.ib57:
-                ib57.setImageResource();
-                break;
-            case R.id.ib58:
-                ib58.setImageResource();
-                break;
-            case R.id.ib59:
-                ib59.setImageResource();
-                break;
-            case R.id.ib60:
-                ib60.setImageResource();
-                break;
-            case R.id.ib61:
-                ib61.setImageResource();
-                break;
-            case R.id.ib62:
-                ib62.setImageResource();
-                break;
-            case R.id.ib63:
-                ib63.setImageResource();
-                break;
-            case R.id.ib64:
-                ib64.setImageResource();
-                break;
+        for (int i = 0; i<Buttons.length; i++)
+        {
+                 if(v.getId() == Buttons[i].getId())
+                 {
+                     Buttons[i].setOnClickListener(null);
+                     checkHit(Buttons[i]);
+                 }
+        }
+
+
+
+
+
+
+    }
+
+    public boolean checkHit(ImageButton ib)
+    {
+
+        for (ImageButton i: ShipS) {
+            if (i == ib)
+            {
+                ib.setImageDrawable(hit);
+                return true;
+            }
+        }
+        for (ImageButton i: ShipM) {
+            if (i == ib)
+            {
+                ib.setImageDrawable(hit);
+                return true;
+            }
+        }
+        for (ImageButton i: ShipL) {
+            if (i == ib)
+            {
+                ib.setImageDrawable(hit);
+                return true;
+            }
+        }
+
+        ib.setImageDrawable(miss);
+        return false;
+
+
     }
 }
