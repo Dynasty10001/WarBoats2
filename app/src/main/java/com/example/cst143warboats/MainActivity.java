@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void PlayGame() {
-//            Intent intent = new Intent(this, PlayGame.class);
-//            intent.putExtra("name", etName.getText().toString());
-//            intent.putExtra("img", ivPic.getDrawable().toString());
-//            this.startActivity(intent);
+            Intent intent = new Intent(this, PlayGame.class);
+            intent.putExtra("name", etName.getText().toString());
+            intent.putExtra("img", ivPic.getDrawable().toString());
+            this.startActivity(intent);
         }
 
         static final int REQUEST_IMAGE_CAPTURE = 1;
