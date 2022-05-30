@@ -11,12 +11,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,41 +32,31 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
             etName = findViewById(R.id.etName);
-            ivPic = findViewById(R.id.ivPic);;
-            ibCamera = findViewById(R.id.ibCamera);;
-            btnPlayGame = findViewById(R.id.btnPlayGame);;
+            ivPic = findViewById(R.id.ivPic);
+            ibCamera = findViewById(R.id.ibCamera);
+            btnPlayGame = findViewById(R.id.btnPlayGame);
 
-        ibCamera.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v)
-            {
+        ibCamera.setOnClickListener(v -> {
 
-                checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
-                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
-                        checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    dispatchTakePictureIntent();
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
-                }
+            checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
+            checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
+            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                dispatchTakePictureIntent();
+            }
+            else {
+                Toast.makeText(MainActivity.this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btnPlayGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                PlayGame();
-            }
-        });
+        btnPlayGame.setOnClickListener(v -> PlayGame());
     }
 
     // Function to check and request permission.
@@ -82,12 +69,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 // Requesting the permission
                 ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
-                if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
+                return ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED;
             }
 
     }
