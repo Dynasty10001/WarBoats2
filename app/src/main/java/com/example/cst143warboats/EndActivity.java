@@ -34,12 +34,12 @@ public class EndActivity extends AppCompatActivity {
         int shotsLeft;
         if (win){
             shotsLeft = b.getInt("shots");
-            tvResults.setText("Congratulations Capn'" + name + "!!!!!\nYou Sank all the enemy ships!!!!!");
+            tvResults.setText("Congratulations Capn' " + name + "!!!!!\nYou Sank all the enemy ships!!!!!");
             tvScore.setText("You finished with " + shotsLeft + " Shots Left!");
         }
         else
         {
-            tvResults.setText("Sorry Capn'" + name + ".\nYou failed to sink all the enemy ships");
+            tvResults.setText("Sorry Capn' " + name + ".\nYou failed to sink all the enemy ships");
         }
 
         btnPlayAgain = findViewById(R.id.btnPlayAgain);

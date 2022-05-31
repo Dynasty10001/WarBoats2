@@ -209,7 +209,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
 
         if (b1){
-            int l = 9 - tempL.length;
+            int l = 8 - tempL.length;
             boolean b;
             //Horizontal
             do {
@@ -252,7 +252,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (int i = 0; i<tempL.length; i++) { locations[tempL[i] - 1] = -1; }
 
         if (b2){
-            int l = 9 - tempM.length;
+            int l = 8 - tempM.length;
             boolean b;
             //Horizontal
             do {
@@ -295,7 +295,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (int i = 0; i<tempM.length; i++) { locations[tempM[i] - 1] = -1; }
 
         if (b3){
-            int l = 9 - tempS.length;
+            int l = 8 - tempS.length;
             boolean b;
             //Horizontal
             do {
@@ -429,7 +429,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         {
             Intent intent = new Intent(this, EndActivity.class);
             intent.putExtra("name", name);
-            intent.putExtra("win", false);
+            intent.putExtra("win", true);
             intent.putExtra("shots", shotsLeft);
             this.startActivity(intent);
         }
