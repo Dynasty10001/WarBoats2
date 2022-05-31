@@ -3,10 +3,12 @@ package com.example.cst143warboats;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
@@ -16,6 +18,11 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     TextView tvRemain;
 
     String name;
+
+
+    ImageView ivShipS;
+    ImageView ivShipM;
+    ImageView ivShipL;
 
     ImageButton[] ShipS = new ImageButton[2];
     ImageButton[] ShipM = new ImageButton[3];
@@ -53,6 +60,10 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         tvName.setText("Capn' " + name);
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
+
+        ivShipS = findViewById(R.id.ivShipS);
+        ivShipM = findViewById(R.id.ivShipM);
+        ivShipL = findViewById(R.id.ivShipL);
 
         miss = getResources().getDrawable(R.drawable.ic_sploosh);
         hit = getResources().getDrawable(R.drawable.ic_explosion);
@@ -405,6 +416,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             if (ib.getTag() .equals(1)) { return; }
         }
         ShipSSunk = true;
+        ivShipS.setBackgroundColor(Color.RED);
     }
 
     public void checkShipM()
@@ -413,6 +425,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             if (ib.getTag().equals(1)) { return; }
         }
         ShipMSunk = true;
+        ivShipM.setBackgroundColor(Color.RED);
     }
 
     public void checkShipL()
@@ -421,6 +434,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             if (ib.getTag() .equals(1)) { return; }
         }
         ShipLSunk = true;
+        ivShipL.setBackgroundColor(Color.RED);
     }
 
     public void EndActivity(boolean b)
