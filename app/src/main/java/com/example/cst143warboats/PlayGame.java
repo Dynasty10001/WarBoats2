@@ -27,8 +27,6 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     boolean ShipMSunk = false;
     boolean ShipLSunk = false;
 
-    //TODO Look Into SVG (Font Awesome?)
-
     Drawable hit;
     Drawable miss;
 
@@ -212,7 +210,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         if (b1){
             int l = 9 - tempL.length;
-            boolean b = true;
+            boolean b;
             //Horizontal
             do {
                 b=false;
@@ -225,13 +223,14 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                 for (int i = 0; i<tempL.length; i++) {
                     if (locations[tempL[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
         }
         else {
             int l = 9 - tempL.length;
-            boolean b = true;
+            boolean b;
             do {
                 b=false;
                 //vertical
@@ -244,6 +243,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                 for (int i = 0; i<tempL.length; i++) {
                     if (locations[tempL[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
@@ -253,7 +253,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         if (b2){
             int l = 9 - tempM.length;
-            boolean b = true;
+            boolean b;
             //Horizontal
             do {
                 b=false;
@@ -266,25 +266,27 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                 for (int i = 0; i<tempM.length; i++) {
                     if (locations[tempM[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
         }
         else {
             int l = 9 - tempM.length;
-            boolean b = true;
+            boolean b;
             do {
                 b=false;
                 //vertical
                 int y = (int) Math.floor(Math.random() * l) + 1;
                 int x = (int) Math.floor(Math.random() * 8) + 1;
                 for (int i = 0; i < tempM.length; i++) {
-                    int temp = ((y -1) * 8) + x + (i * 8);
+                    int temp = ((y - 1) * 8) + x + (i * 8);
                     tempM[i] = temp;
                 }
                 for (int i = 0; i<tempM.length; i++) {
                     if (locations[tempM[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
@@ -294,7 +296,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         if (b3){
             int l = 9 - tempS.length;
-            boolean b = true;
+            boolean b;
             //Horizontal
             do {
                 b=false;
@@ -307,13 +309,14 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                 for (int i = 0; i<tempS.length; i++) {
                     if (locations[tempS[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
         }
         else {
             int l = 9 - tempS.length;
-            boolean b = true;
+            boolean b;
             do {
                 b=false;
                 //vertical
@@ -326,6 +329,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                 for (int i = 0; i<tempS.length; i++) {
                     if (locations[tempS[i] - 1] == -1) {
                         b = true;
+                        break;
                     }
                 }
             } while (b);
@@ -333,9 +337,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         for (int i = 0; i<tempS.length; i++) { locations[tempS[i] - 1] = -1; }
 
-        for (int i =0; i< ShipL.length; i++) { ShipL[i] = Buttons[tempL[i]]; }
-        for (int i =0; i< ShipM.length; i++) { ShipM[i] = Buttons[tempM[i]]; }
-        for (int i =0; i< ShipS.length; i++) { ShipS[i] = Buttons[tempS[i]]; }
+        for (int i =0; i< ShipL.length; i++) { ShipL[i] = Buttons[tempL[i]]; ShipL[i].setTag(1); }
+        for (int i =0; i< ShipM.length; i++) { ShipM[i] = Buttons[tempM[i]]; ShipM[i].setTag(1); }
+        for (int i =0; i< ShipS.length; i++) { ShipS[i] = Buttons[tempS[i]]; ShipS[i].setTag(1); }
     }
 
     @Override
@@ -354,45 +358,51 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
                  }
         }
 
-        if(ShipSSunk && ShipMSunk && ShipLSunk){
-            EndActivity(true);
-        }
+
         if(!ShipSSunk){ checkShipS(); }
         if(!ShipMSunk){ checkShipM(); }
         if(!ShipLSunk){ checkShipL(); }
-
+        if(ShipSSunk && ShipMSunk && ShipLSunk){
+            EndActivity(true);
+        }
+        if (shotsLeft == 0)
+        {
+            EndActivity(false);
+        }
     }
 
-    public boolean checkHit(ImageButton ib)
+    public void checkHit(ImageButton ib)
     {
 
         for (ImageButton i: ShipS) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
-                return true;
+                ib.setTag(0);
+                return;
             }
         }
         for (ImageButton i: ShipM) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
-                return true;
+                ib.setTag(0);
+                return;
             }
         }
         for (ImageButton i: ShipL) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
-                return true;
+                ib.setTag(0);
+                return;
             }
         }
 
         ib.setImageDrawable(miss);
-        return false;
     }
 
     public void checkShipS()
     {
         for (ImageButton ib: ShipS){
-            if (ib.isClickable()) { return; }
+            if (ib.getTag() .equals(1)) { return; }
         }
         ShipSSunk = true;
     }
@@ -400,7 +410,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     public void checkShipM()
     {
         for (ImageButton ib: ShipM){
-            if (ib.isClickable()) { return; }
+            if (ib.getTag().equals(1)) { return; }
         }
         ShipMSunk = true;
     }
@@ -408,7 +418,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     public void checkShipL()
     {
         for (ImageButton ib: ShipL){
-            if (ib.isClickable()) { return; }
+            if (ib.getTag() .equals(1)) { return; }
         }
         ShipLSunk = true;
     }
