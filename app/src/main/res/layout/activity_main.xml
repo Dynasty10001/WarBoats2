@@ -24,6 +24,7 @@
         android:text="WARBOATS"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivPic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNon" />
@@ -45,11 +46,13 @@
         android:id="@+id/ivPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tvCapn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/ic_default_avatar"
+        tools:srcCompat="@drawable/ic_default_avatar" />
 
     <ImageButton
         android:id="@+id/ibCamera"

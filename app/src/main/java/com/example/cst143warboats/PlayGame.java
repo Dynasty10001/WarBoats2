@@ -138,71 +138,6 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             Button.setOnClickListener(this);
         }
 
-//        Buttons[0].setOnClickListener(this);
-//        Buttons[1].setOnClickListener(this);
-//        Buttons[2].setOnClickListener(this);
-//        Buttons[3].setOnClickListener(this);
-//        Buttons[4].setOnClickListener(this);
-//        Buttons[5].setOnClickListener(this);
-//        Buttons[6].setOnClickListener(this);
-//        Buttons[7].setOnClickListener(this);
-//        Buttons[8].setOnClickListener(this);
-//        Buttons[9].setOnClickListener(this);
-//        Buttons[10].setOnClickListener(this);
-//        Buttons[11].setOnClickListener(this);
-//        Buttons[12].setOnClickListener(this);
-//        Buttons[13].setOnClickListener(this);
-//        Buttons[14].setOnClickListener(this);
-//        Buttons[15].setOnClickListener(this);
-//        Buttons[16].setOnClickListener(this);
-//        Buttons[17].setOnClickListener(this);
-//        Buttons[18].setOnClickListener(this);
-//        Buttons[19].setOnClickListener(this);
-//        Buttons[20].setOnClickListener(this);
-//        Buttons[21].setOnClickListener(this);
-//        Buttons[22].setOnClickListener(this);
-//        Buttons[23].setOnClickListener(this);
-//        Buttons[24].setOnClickListener(this);
-//        Buttons[25].setOnClickListener(this);
-//        Buttons[26].setOnClickListener(this);
-//        Buttons[27].setOnClickListener(this);
-//        Buttons[28].setOnClickListener(this);
-//        Buttons[29].setOnClickListener(this);
-//        Buttons[30].setOnClickListener(this);
-//        Buttons[31].setOnClickListener(this);
-//        Buttons[32].setOnClickListener(this);
-//        Buttons[33].setOnClickListener(this);
-//        Buttons[34].setOnClickListener(this);
-//        Buttons[35].setOnClickListener(this);
-//        Buttons[36].setOnClickListener(this);
-//        Buttons[37].setOnClickListener(this);
-//        Buttons[38].setOnClickListener(this);
-//        Buttons[39].setOnClickListener(this);
-//        Buttons[40].setOnClickListener(this);
-//        Buttons[41].setOnClickListener(this);
-//        Buttons[42].setOnClickListener(this);
-//        Buttons[43].setOnClickListener(this);
-//        Buttons[44].setOnClickListener(this);
-//        Buttons[45].setOnClickListener(this);
-//        Buttons[46].setOnClickListener(this);
-//        Buttons[47].setOnClickListener(this);
-//        Buttons[48].setOnClickListener(this);
-//        Buttons[49].setOnClickListener(this);
-//        Buttons[50].setOnClickListener(this);
-//        Buttons[51].setOnClickListener(this);
-//        Buttons[52].setOnClickListener(this);
-//        Buttons[53].setOnClickListener(this);
-//        Buttons[54].setOnClickListener(this);
-//        Buttons[55].setOnClickListener(this);
-//        Buttons[56].setOnClickListener(this);
-//        Buttons[57].setOnClickListener(this);
-//        Buttons[58].setOnClickListener(this);
-//        Buttons[59].setOnClickListener(this);
-//        Buttons[60].setOnClickListener(this);
-//        Buttons[61].setOnClickListener(this);
-//        Buttons[62].setOnClickListener(this);
-//        Buttons[63].setOnClickListener(this);
-
         RandomiseLocation();
 
     }
@@ -212,7 +147,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         int[] locations = new int[64];
         for (int i = 0; i<locations.length; i++) {
-            locations[i] = i;
+            locations[i] = -1;
         }
 
         int[] tempS = new int[2];
@@ -249,7 +184,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             boolean b;
             do {
                 b=false;
-                //vertical
+                //Vertical
                 int y = (int) Math.floor(Math.random() * l) + 1;//5
                 int x = (int) Math.floor(Math.random() * 8) + 1;//2
                 for (int i = 0; i < tempL.length; i++) {
@@ -292,7 +227,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             boolean b;
             do {
                 b=false;
-                //vertical
+                //Vertical
                 int y = (int) Math.floor(Math.random() * l) + 1;
                 int x = (int) Math.floor(Math.random() * 8) + 1;
                 for (int i = 0; i < tempM.length; i++) {
@@ -335,7 +270,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             boolean b;
             do {
                 b=false;
-                //vertical
+                //Vertical
                 int y = (int) Math.floor(Math.random() * l) + 1;
                 int x = (int) Math.floor(Math.random() * 8) + 1;
                 for (int i = 0; i < tempS.length; i++) {
@@ -380,8 +315,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         if(!ShipLSunk){ checkShipL(); }
         if(ShipSSunk && ShipMSunk && ShipLSunk){
             EndActivity(true);
-        }
-        if (shotsLeft == 0)
+        } else if (shotsLeft == 0)
         {
             EndActivity(false);
         }
@@ -463,6 +397,5 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             intent.putExtra("win", false);
             this.startActivity(intent);
         }
-
     }
 }

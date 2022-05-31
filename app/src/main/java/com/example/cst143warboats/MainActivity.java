@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,14 +21,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText etName;
     ImageView ivPic;
     ImageButton ibCamera;
     Button btnPlayGame;
-
-
 
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
@@ -49,7 +52,15 @@ public class MainActivity extends AppCompatActivity {
             checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                dispatchTakePictureIntent();
+                if(etName.getText().toString().matches(""))
+                {
+                    Toast.makeText(MainActivity.this, "Please Enter a Name First", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    dispatchTakePictureIntent();
+                }
+
             }
             else {
                 Toast.makeText(MainActivity.this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
@@ -105,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
         public void PlayGame() {
             Intent intent = new Intent(this, PlayGame.class);
             intent.putExtra("name", etName.getText().toString());
@@ -131,9 +141,22 @@ public class MainActivity extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 ivPic.setImageBitmap(imageBitmap);
+
             }
         }
 
+        public void writePic(Bitmap imageBitmap) {
+            try {
+                File path = Environment.getExternalStorageDirectory();
+                File file = new File(path, etName.getText().toString() + "Pic.png");
+                FileOutputStream fileout = new FileOutputStream(file);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.close();
+            }
+            catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
 
 
 }
