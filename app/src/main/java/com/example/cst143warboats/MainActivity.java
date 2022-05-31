@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 ivPic.setImageBitmap(imageBitmap);
-
+                String s = Cody();
             }
         }
 
@@ -158,5 +158,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
+
+
+        public String Cody()
+        {
+            return null;
+        }
 
 }
