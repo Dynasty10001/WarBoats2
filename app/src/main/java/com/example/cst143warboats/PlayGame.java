@@ -133,70 +133,75 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Buttons[62] = findViewById(R.id.ib63);
         Buttons[63] = findViewById(R.id.ib64);
 
-        Buttons[0].setOnClickListener(this);
-        Buttons[1].setOnClickListener(this);
-        Buttons[2].setOnClickListener(this);
-        Buttons[3].setOnClickListener(this);
-        Buttons[4].setOnClickListener(this);
-        Buttons[5].setOnClickListener(this);
-        Buttons[6].setOnClickListener(this);
-        Buttons[7].setOnClickListener(this);
-        Buttons[8].setOnClickListener(this);
-        Buttons[9].setOnClickListener(this);
-        Buttons[10].setOnClickListener(this);
-        Buttons[11].setOnClickListener(this);
-        Buttons[12].setOnClickListener(this);
-        Buttons[13].setOnClickListener(this);
-        Buttons[14].setOnClickListener(this);
-        Buttons[15].setOnClickListener(this);
-        Buttons[16].setOnClickListener(this);
-        Buttons[17].setOnClickListener(this);
-        Buttons[18].setOnClickListener(this);
-        Buttons[19].setOnClickListener(this);
-        Buttons[20].setOnClickListener(this);
-        Buttons[21].setOnClickListener(this);
-        Buttons[22].setOnClickListener(this);
-        Buttons[23].setOnClickListener(this);
-        Buttons[24].setOnClickListener(this);
-        Buttons[25].setOnClickListener(this);
-        Buttons[26].setOnClickListener(this);
-        Buttons[27].setOnClickListener(this);
-        Buttons[28].setOnClickListener(this);
-        Buttons[29].setOnClickListener(this);
-        Buttons[30].setOnClickListener(this);
-        Buttons[31].setOnClickListener(this);
-        Buttons[32].setOnClickListener(this);
-        Buttons[33].setOnClickListener(this);
-        Buttons[34].setOnClickListener(this);
-        Buttons[35].setOnClickListener(this);
-        Buttons[36].setOnClickListener(this);
-        Buttons[37].setOnClickListener(this);
-        Buttons[38].setOnClickListener(this);
-        Buttons[39].setOnClickListener(this);
-        Buttons[40].setOnClickListener(this);
-        Buttons[41].setOnClickListener(this);
-        Buttons[42].setOnClickListener(this);
-        Buttons[43].setOnClickListener(this);
-        Buttons[44].setOnClickListener(this);
-        Buttons[45].setOnClickListener(this);
-        Buttons[46].setOnClickListener(this);
-        Buttons[47].setOnClickListener(this);
-        Buttons[48].setOnClickListener(this);
-        Buttons[49].setOnClickListener(this);
-        Buttons[50].setOnClickListener(this);
-        Buttons[51].setOnClickListener(this);
-        Buttons[52].setOnClickListener(this);
-        Buttons[53].setOnClickListener(this);
-        Buttons[54].setOnClickListener(this);
-        Buttons[55].setOnClickListener(this);
-        Buttons[56].setOnClickListener(this);
-        Buttons[57].setOnClickListener(this);
-        Buttons[58].setOnClickListener(this);
-        Buttons[59].setOnClickListener(this);
-        Buttons[60].setOnClickListener(this);
-        Buttons[61].setOnClickListener(this);
-        Buttons[62].setOnClickListener(this);
-        Buttons[63].setOnClickListener(this);
+        for (ImageButton Button : Buttons)
+        {
+            Button.setOnClickListener(this);
+        }
+
+//        Buttons[0].setOnClickListener(this);
+//        Buttons[1].setOnClickListener(this);
+//        Buttons[2].setOnClickListener(this);
+//        Buttons[3].setOnClickListener(this);
+//        Buttons[4].setOnClickListener(this);
+//        Buttons[5].setOnClickListener(this);
+//        Buttons[6].setOnClickListener(this);
+//        Buttons[7].setOnClickListener(this);
+//        Buttons[8].setOnClickListener(this);
+//        Buttons[9].setOnClickListener(this);
+//        Buttons[10].setOnClickListener(this);
+//        Buttons[11].setOnClickListener(this);
+//        Buttons[12].setOnClickListener(this);
+//        Buttons[13].setOnClickListener(this);
+//        Buttons[14].setOnClickListener(this);
+//        Buttons[15].setOnClickListener(this);
+//        Buttons[16].setOnClickListener(this);
+//        Buttons[17].setOnClickListener(this);
+//        Buttons[18].setOnClickListener(this);
+//        Buttons[19].setOnClickListener(this);
+//        Buttons[20].setOnClickListener(this);
+//        Buttons[21].setOnClickListener(this);
+//        Buttons[22].setOnClickListener(this);
+//        Buttons[23].setOnClickListener(this);
+//        Buttons[24].setOnClickListener(this);
+//        Buttons[25].setOnClickListener(this);
+//        Buttons[26].setOnClickListener(this);
+//        Buttons[27].setOnClickListener(this);
+//        Buttons[28].setOnClickListener(this);
+//        Buttons[29].setOnClickListener(this);
+//        Buttons[30].setOnClickListener(this);
+//        Buttons[31].setOnClickListener(this);
+//        Buttons[32].setOnClickListener(this);
+//        Buttons[33].setOnClickListener(this);
+//        Buttons[34].setOnClickListener(this);
+//        Buttons[35].setOnClickListener(this);
+//        Buttons[36].setOnClickListener(this);
+//        Buttons[37].setOnClickListener(this);
+//        Buttons[38].setOnClickListener(this);
+//        Buttons[39].setOnClickListener(this);
+//        Buttons[40].setOnClickListener(this);
+//        Buttons[41].setOnClickListener(this);
+//        Buttons[42].setOnClickListener(this);
+//        Buttons[43].setOnClickListener(this);
+//        Buttons[44].setOnClickListener(this);
+//        Buttons[45].setOnClickListener(this);
+//        Buttons[46].setOnClickListener(this);
+//        Buttons[47].setOnClickListener(this);
+//        Buttons[48].setOnClickListener(this);
+//        Buttons[49].setOnClickListener(this);
+//        Buttons[50].setOnClickListener(this);
+//        Buttons[51].setOnClickListener(this);
+//        Buttons[52].setOnClickListener(this);
+//        Buttons[53].setOnClickListener(this);
+//        Buttons[54].setOnClickListener(this);
+//        Buttons[55].setOnClickListener(this);
+//        Buttons[56].setOnClickListener(this);
+//        Buttons[57].setOnClickListener(this);
+//        Buttons[58].setOnClickListener(this);
+//        Buttons[59].setOnClickListener(this);
+//        Buttons[60].setOnClickListener(this);
+//        Buttons[61].setOnClickListener(this);
+//        Buttons[62].setOnClickListener(this);
+//        Buttons[63].setOnClickListener(this);
 
         RandomiseLocation();
 
@@ -388,6 +393,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (ImageButton i: ShipS) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
+                ib.setBackgroundColor(Color.RED);
                 ib.setTag(0);
                 return;
             }
@@ -395,6 +401,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (ImageButton i: ShipM) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
+                ib.setBackgroundColor(Color.RED);
                 ib.setTag(0);
                 return;
             }
@@ -402,12 +409,14 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (ImageButton i: ShipL) {
             if (i == ib) {
                 ib.setImageDrawable(hit);
+                ib.setBackgroundColor(Color.RED);
                 ib.setTag(0);
                 return;
             }
         }
 
         ib.setImageDrawable(miss);
+        ib.setBackgroundColor(Color.BLUE);
     }
 
     public void checkShipS()
