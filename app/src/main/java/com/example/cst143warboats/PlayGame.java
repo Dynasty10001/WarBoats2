@@ -15,6 +15,8 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     TextView tvBest;
     TextView tvRemain;
 
+    String name;
+
     ImageButton[] ShipS = new ImageButton[2];
     ImageButton[] ShipM = new ImageButton[3];
     ImageButton[] ShipL = new ImageButton[4];
@@ -45,7 +47,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        String name = b.getString("name");
+        name = b.getString("name");
 
         tvBest = findViewById(R.id.tvBest);
         tvName = findViewById(R.id.tvName);
@@ -353,7 +355,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         }
 
         if(ShipSSunk && ShipMSunk && ShipLSunk){
-
+            EndActivity(true);
         }
         if(!ShipSSunk){ checkShipS(); }
         if(!ShipMSunk){ checkShipM(); }
@@ -409,5 +411,25 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             if (ib.isClickable()) { return; }
         }
         ShipLSunk = true;
+    }
+
+    public void EndActivity(boolean b)
+    {
+        if (b)
+        {
+            Intent intent = new Intent(this, EndActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("win", false);
+            intent.putExtra("shots", shotsLeft);
+            this.startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(this, EndActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("win", false);
+            this.startActivity(intent);
+        }
+
     }
 }
