@@ -10,20 +10,24 @@ import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +35,15 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivPic;
     ImageButton ibCamera;
     Button btnPlayGame;
+    Spinner playerSpin;
+
+    private DBhelper db;
+    private Cursor cursor;
 
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
+
+    ArrayList<String> playerList;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -45,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
             ivPic = findViewById(R.id.ivPic);
             ibCamera = findViewById(R.id.ibCamera);
             btnPlayGame = findViewById(R.id.btnPlayGame);
+
+            db = new DBhelper(this);
+            //////////////////////////////
+//            db.open();
+//            db.onUpgrade(db.sqlDB,0,1);
+//            db.createPlayer(new player("Cody", 1, "location"));
+//            db.createPlayer(new player("Nero", 1, "locationALT"));
+//            db.createPlayer(new player("Zuko", 1, "locationTHETHIRD"));
+//            cursor = db.getAllPlayers();
+//            playerList = new ArrayList<>();
+//            if(cursor.moveToFirst())
+//            {
+//                do {
+//                    playerList.add(cursor.getString(0) + " " + cursor.getString(1));
+//            }while(cursor.moveToNext());
+//            }
+//            populateSpinner();
+            //////////////////////////////
 
         ibCamera.setOnClickListener(v -> {
 
@@ -68,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnPlayGame.setOnClickListener(v -> PlayGame());
+
     }
 
     // Function to check and request permission.
@@ -141,29 +170,30 @@ public class MainActivity extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 ivPic.setImageBitmap(imageBitmap);
-                String s = Cody();
+//                writeData(imageBitmap);
             }
         }
 
-        public void writePic(Bitmap imageBitmap) {
+        public void writeData(Bitmap imageBitmap) {
             try {
                 File path = Environment.getExternalStorageDirectory();
                 File file = new File(path, etName.getText().toString() + "Pic.png");
                 FileOutputStream fileout = new FileOutputStream(file);
-                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                outputWriter.close();
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,fileout);
+                fileout.flush();
+                fileout.close();
             }
             catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
 
-
-
-
-        public String Cody()
+        public void populateSpinner()
         {
-            return null;
+            playerSpin = findViewById(R.id.playerSpin);
+            ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, playerList);
+            ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            playerSpin.setAdapter(ad);
         }
 
 }

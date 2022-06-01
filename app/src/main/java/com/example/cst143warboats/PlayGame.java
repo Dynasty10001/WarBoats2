@@ -147,7 +147,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         int[] locations = new int[64];
         for (int i = 0; i<locations.length; i++) {
-            locations[i] = -1;
+            locations[i] = i;
         }
 
         int[] tempS = new int[2];
@@ -266,7 +266,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             } while (b);
         }
         else {
-            int l = 9 - tempS.length;
+            int l = 8 - tempS.length;
             boolean b;
             do {
                 b=false;
