@@ -76,10 +76,10 @@ public class DBhelper extends SQLiteOpenHelper {
         return sqlDB.query(TABLE_NAME, sFields, null, null, null, null, null);
     }
 
-    public Cursor getPlayer(long id) throws SQLException
+    public Cursor getPlayer(String name) throws SQLException
     {
         String sFields[] = new String[] {ID,NAME,SCORE,PIC};
-        Cursor cursor = sqlDB.query(TABLE_NAME, sFields, ID + " = " + id, null, null, null, null);
+        Cursor cursor = sqlDB.query(TABLE_NAME, sFields, NAME + " = " + name.trim(), null, null, null, null);
         if(cursor != null)
         {
             cursor.moveToFirst();

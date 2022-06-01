@@ -20,9 +20,8 @@ public class EndActivity extends AppCompatActivity {
     ImageView ivPic;
 
     private DBhelper db;
-    private Cursor cursor;
 
-    player CurrentPlayer;
+    private player CurrentPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +34,23 @@ public class EndActivity extends AppCompatActivity {
         tvResults = findViewById(R.id.tvResults);
         tvScore = findViewById(R.id.tvScore);
 
-
         name = b.getString("name");
         Boolean win = b.getBoolean("win");
 
-
+        db = new DBhelper(this);
+        CurrentPlayer = (player) db.getPlayer(name);
 
         int shotsLeft;
         if (win){
             shotsLeft = b.getInt("shots");
-            tvResults.setText("Congratulations Capn' " + name + "!!!!!\nYou Sank all the enemy ships!!!!!");
+            tvResults.setText("Congratulations Capn' " + CurrentPlayer.name + "!!!!!\nYou Sank all the enemy ships!!!!!");
             tvScore.setText("You finished with " + shotsLeft + " Shots Left!");
-            db = new DBhelper(this);
-            CurrentPlayer = new player(name, shotsLeft, "");//todo
-            db.updatePlayer(CurrentPlayer);
+            if (shotsLeft > CurrentPlayer.score)
+            {
+                CurrentPlayer.score = shotsLeft;
+                db.updatePlayer(CurrentPlayer);
+            }
+
         }
         else
         {
@@ -65,7 +67,6 @@ public class EndActivity extends AppCompatActivity {
     public void PlayAgain() {
         Intent intent = new Intent(this, PlayGame.class);
         intent.putExtra("name", name);
-//            intent.putExtra("img", ivPic.getDrawable().toString());
         this.startActivity(intent);
     }
 }

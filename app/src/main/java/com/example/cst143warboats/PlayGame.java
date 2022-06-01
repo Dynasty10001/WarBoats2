@@ -3,22 +3,31 @@ package com.example.cst143warboats;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
 
     TextView tvName;
     TextView tvBest;
     TextView tvRemain;
+    ImageView ivPlayerPic;
 
     String name;
 
+    private DBhelper db;
+    private player CurrentPlayer;
 
     ImageView ivShipS;
     ImageView ivShipM;
@@ -52,13 +61,21 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        name = b.getString("name");
+        name = b.getString("name").trim();
+
+        db = new DBhelper(this);
+        CurrentPlayer = (player) db.getPlayer(name);
 
         tvBest = findViewById(R.id.tvBest);
         tvName = findViewById(R.id.tvName);
+        ivPlayerPic = findViewById(R.id.ivPlayerPic);
         tvRemain = findViewById(R.id.tvRemain);
 
-        tvName.setText("Capn' " + name);
+        tvName.setText("Capn' " + CurrentPlayer.name);
+        tvBest.setText("Best Score: " + CurrentPlayer.score);
+        String path = Environment.getExternalStorageDirectory().toString().trim() + CurrentPlayer.name + "Pic.png";
+        Bitmap img = BitmapFactory.decodeFile(path);
+        ivPlayerPic.setImageBitmap(img);
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
 
         ivShipS = findViewById(R.id.ivShipS);
@@ -385,7 +402,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         if (b)
         {
             Intent intent = new Intent(this, EndActivity.class);
-            intent.putExtra("name", name);
+            intent.putExtra("name", CurrentPlayer.name);
             intent.putExtra("win", true);
             intent.putExtra("shots", shotsLeft);
             this.startActivity(intent);
@@ -393,7 +410,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         else
         {
             Intent intent = new Intent(this, EndActivity.class);
-            intent.putExtra("name", name);
+            intent.putExtra("name", CurrentPlayer.name);
             intent.putExtra("win", false);
             this.startActivity(intent);
         }

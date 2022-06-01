@@ -12,9 +12,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +28,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 //            }while(cursor.moveToNext());
 //            }
 //            populateSpinner();
-            //////////////////////////////
+
 
         ibCamera.setOnClickListener(v -> {
 
@@ -146,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
         public void PlayGame() {
+            db.createPlayer(new player(etName.getText().toString(), 0, Environment.getExternalStorageDirectory().toString().trim() + etName.getText().toString().trim() + "Pic.png"));
             Intent intent = new Intent(this, PlayGame.class);
             intent.putExtra("name", etName.getText().toString());
-//            intent.putExtra("img", ivPic.getDrawable().toString());
             this.startActivity(intent);
         }
 
@@ -170,21 +174,15 @@ public class MainActivity extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 ivPic.setImageBitmap(imageBitmap);
-//                writeData(imageBitmap);
-            }
-        }
-
-        public void writeData(Bitmap imageBitmap) {
-            try {
-                File path = Environment.getExternalStorageDirectory();
-                File file = new File(path, etName.getText().toString() + "Pic.png");
-                FileOutputStream fileOut = new FileOutputStream(file);
-                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOut);
-                fileOut.flush();
-                fileOut.close();
-            }
-            catch (Exception e) {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                String path = Environment.getExternalStorageDirectory().toString();
+                File file = new File(path, etName.getText().toString().trim() + "Pic.png");
+                try(FileOutputStream fileOut = new FileOutputStream(file)){
+                    imageBitmap.compress(Bitmap.CompressFormat.PNG,100,fileOut);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
