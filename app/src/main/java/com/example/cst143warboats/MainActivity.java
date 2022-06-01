@@ -178,10 +178,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 File path = Environment.getExternalStorageDirectory();
                 File file = new File(path, etName.getText().toString() + "Pic.png");
-                FileOutputStream fileout = new FileOutputStream(file);
-                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,fileout);
-                fileout.flush();
-                fileout.close();
+                FileOutputStream fileOut = new FileOutputStream(file);
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOut);
+                fileOut.flush();
+                fileOut.close();
             }
             catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -190,6 +190,16 @@ public class MainActivity extends AppCompatActivity {
 
         public void populateSpinner()
         {
+            db.open();
+            cursor = db.getAllPlayers();
+            playerList = new ArrayList<>();
+            if(cursor.moveToFirst())
+            {
+                do {
+                    playerList.add(cursor.getString(0) + " " + cursor.getString(1));
+            }while(cursor.moveToNext());
+            }
+
             playerSpin = findViewById(R.id.playerSpin);
             ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, playerList);
             ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
