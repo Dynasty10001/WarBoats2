@@ -7,7 +7,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -61,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
             btnPlayGame = findViewById(R.id.btnPlayGame);
 
             db = new DBhelper(this);
+            db.open();
+
+            Intent intent = new Intent(this, FireNotification.class);
+            PendingIntent pIntent = PendingIntent.getService(this, 1000, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            //set to 7000 or 7 seconds for testing,otherwise set to 86400000 or 24 hours
+            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 86400000, pIntent);
+
             //////////////////////////////
 //            db.open();
 //            db.onUpgrade(db.sqlDB,0,1);
@@ -150,10 +162,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
         public void PlayGame() {
-            db.createPlayer(new player(etName.getText().toString(), 0, Environment.getExternalStorageDirectory().toString().trim() + etName.getText().toString().trim() + "Pic.png"));
-            Intent intent = new Intent(this, PlayGame.class);
-            intent.putExtra("name", etName.getText().toString());
-            this.startActivity(intent);
+            if (etName.getText().toString().trim().length() == 0)
+            {
+                Toast.makeText(this, "You must enter a name", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                db.open();
+                player CurrentPlayer = new player(etName.getText().toString().trim(), 0, Environment.getExternalStorageDirectory().toString().trim() + etName.getText().toString().trim() + "Pic.png");
+                cursor = db.getAllPlayers();
+                playerList = new ArrayList<>();
+                if(cursor.moveToFirst())
+                {
+                    do {
+                        playerList.add(cursor.getString(0) + " " + cursor.getString(1));
+                    }while(cursor.moveToNext());
+                }
+                boolean b = true;
+                long id = 0;
+                for (String temp: playerList)
+                {
+                    if (CurrentPlayer.name.equals(temp))
+                    {
+                        b=false;
+                        id = Long.parseLong(temp.substring(0, temp.indexOf(" ")));
+                        break;
+                    }
+                }
+
+                if (b)
+                {
+                    db.createPlayer(CurrentPlayer);
+                    db.close();
+                    Intent intent = new Intent(this, PlayGame.class);
+                    intent.putExtra("name", CurrentPlayer.name);
+                    this.startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(this, PlayGame.class);
+                    intent.putExtra("id", id);
+                    this.startActivity(intent);
+                    db.close();
+                }
+
+
+
+            }
         }
 
         static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -202,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, playerList);
             ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             playerSpin.setAdapter(ad);
+            db.close();
         }
 
 }

@@ -37,13 +37,13 @@ public class EndActivity extends AppCompatActivity {
         name = b.getString("name");
         Boolean win = b.getBoolean("win");
 
-        db = new DBhelper(this);
-        CurrentPlayer = (player) db.getPlayer(name);
+//        db = new DBhelper(this);
+//        CurrentPlayer = (player) db.getPlayer(name);
 
         int shotsLeft;
         if (win){
             shotsLeft = b.getInt("shots");
-            tvResults.setText("Congratulations Capn' " + CurrentPlayer.name + "!!!!!\nYou Sank all the enemy ships!!!!!");
+            tvResults.setText("Congratulations Capn' " + name + "!!!!!\nYou Sank all the enemy ships!!!!!");
             tvScore.setText("You finished with " + shotsLeft + " Shots Left!");
             if (shotsLeft > CurrentPlayer.score)
             {

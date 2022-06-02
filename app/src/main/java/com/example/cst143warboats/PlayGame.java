@@ -62,20 +62,30 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         Bundle b = i.getExtras();
 
         name = b.getString("name").trim();
+        long id = b.getLong("id");
 
-        db = new DBhelper(this);
-        CurrentPlayer = (player) db.getPlayer(name);
+        if (id >0)
+        {
+            db = new DBhelper(this);
+            db.open();
+            CurrentPlayer = (player) db.getPlayer(id);
+            db.close();
+        }
+        else
+        {
+
+        }
 
         tvBest = findViewById(R.id.tvBest);
         tvName = findViewById(R.id.tvName);
         ivPlayerPic = findViewById(R.id.ivPlayerPic);
         tvRemain = findViewById(R.id.tvRemain);
 
-        tvName.setText("Capn' " + CurrentPlayer.name);
-        tvBest.setText("Best Score: " + CurrentPlayer.score);
-        String path = Environment.getExternalStorageDirectory().toString().trim() + CurrentPlayer.name + "Pic.png";
-        Bitmap img = BitmapFactory.decodeFile(path);
-        ivPlayerPic.setImageBitmap(img);
+        tvName.setText("Capn' " + name);
+        tvBest.setText("Best Score: 0");
+//        String path = Environment.getExternalStorageDirectory().toString().trim() + CurrentPlayer.name + "Pic.png";
+//        Bitmap img = BitmapFactory.decodeFile(path);
+//        ivPlayerPic.setImageBitmap(img);
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
 
         ivShipS = findViewById(R.id.ivShipS);
@@ -160,7 +170,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void RandomiseLocation() {
-        //Checking horizontal or vertical orientation of ship
+
 
         int[] locations = new int[64];
         for (int i = 0; i<locations.length; i++) {
@@ -171,6 +181,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         int[] tempM = new int[3];
         int[] tempL = new int[4];
 
+        //Checking horizontal or vertical orientation of ship
         boolean b1 = (Math.random() > 0.5);
         boolean b2 = (Math.random() > 0.5);
         boolean b3 = (Math.random() > 0.5);
@@ -197,13 +208,13 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             } while (b);
         }
         else {
-            int l = 9 - tempL.length;
+            int l = 8 - tempL.length;
             boolean b;
             do {
                 b=false;
                 //Vertical
-                int y = (int) Math.floor(Math.random() * l) + 1;//5
-                int x = (int) Math.floor(Math.random() * 8) + 1;//2
+                int y = (int) Math.floor(Math.random() * l) + 1;
+                int x = (int) Math.floor(Math.random() * 8) + 1;
                 for (int i = 0; i < tempL.length; i++) {
                     int temp = ((y -1) * 8) + x + (i * 8);
                     tempL[i] = temp;
@@ -240,7 +251,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             } while (b);
         }
         else {
-            int l = 9 - tempM.length;
+            int l = 8 - tempM.length;
             boolean b;
             do {
                 b=false;
@@ -402,7 +413,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         if (b)
         {
             Intent intent = new Intent(this, EndActivity.class);
-            intent.putExtra("name", CurrentPlayer.name);
+            intent.putExtra("name", name);
             intent.putExtra("win", true);
             intent.putExtra("shots", shotsLeft);
             this.startActivity(intent);
@@ -410,7 +421,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         else
         {
             Intent intent = new Intent(this, EndActivity.class);
-            intent.putExtra("name", CurrentPlayer.name);
+            intent.putExtra("name", name);
             intent.putExtra("win", false);
             this.startActivity(intent);
         }
