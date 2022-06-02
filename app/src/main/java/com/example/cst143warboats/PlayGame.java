@@ -65,21 +65,21 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         name = b.getString("name").trim();
         long id = b.getLong("id");
-//        db = new DBhelper(this);
-//        db.open();
-//        playerList = db.getPlayerlist();
-//
-//        if (id >0)
-//        {
-//            db = new DBhelper(this);
-//            db.open();
-//            CurrentPlayer = (player) db.getPlayer(id);
-//            db.close();
-//        }
-//        else
-//        {
-//            CurrentPlayer = playerList.get(playerList.size() -1);
-//        }
+        db = new DBhelper(this);
+        db.open();
+        playerList = db.getPlayerlist();
+
+        if (id >0)
+        {
+
+            db.open();
+            CurrentPlayer = (player) db.getPlayer(id);
+            db.close();
+        }
+        else
+        {
+            CurrentPlayer = playerList.get(playerList.size() -1);
+        }
 
         tvBest = findViewById(R.id.tvBest);
         tvName = findViewById(R.id.tvName);
