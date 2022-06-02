@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -169,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 db.open();
-                player CurrentPlayer = new player(etName.getText().toString().trim(), 0, Environment.getExternalStorageDirectory().toString().trim() + etName.getText().toString().trim() + "Pic.png");
+                String s = Environment.getExternalStorageDirectory().toString() + "/";
+                player CurrentPlayer = new player(etName.getText().toString().trim(), 0, s + etName.getText().toString().trim() + "Pic.png");
                 playerList = db.getPlayerlist();
 
                 boolean b = true;
@@ -179,6 +181,22 @@ public class MainActivity extends AppCompatActivity {
                     if (CurrentPlayer.name.equals(player.name))
                     {
                         b=false;
+                        CurrentPlayer.id = player.id;
+                        if (player.score > 0)
+                        {
+                            CurrentPlayer.score = player.score;
+                        }
+                        File imgFile = new  File(CurrentPlayer.pic);
+
+                        if(imgFile.exists()){
+
+                        }
+                        else
+                        {
+                            CurrentPlayer.pic = player.pic;
+                            db.updatePlayer(CurrentPlayer);
+                        }
+
                         id = player.id;
                         break;
                     }

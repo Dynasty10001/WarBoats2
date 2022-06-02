@@ -86,9 +86,14 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         tvName.setText("Capn' " + name);
         tvBest.setText("Best Score: " + CurrentPlayer.score);
 
-//        String path = CurrentPlayer.pic;
-//        Bitmap img = BitmapFactory.decodeFile(path);
-//        ivPlayerPic.setImageBitmap(img);
+        File imgFile = new File(CurrentPlayer.pic);
+
+        if(imgFile.exists()){
+
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            ivPlayerPic.setImageBitmap(myBitmap);
+
+        }
 
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
 
@@ -428,6 +433,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         {
             Intent intent = new Intent(this, EndActivity.class);
             intent.putExtra("name", name);
+            intent.putExtra("id", CurrentPlayer.id);
             intent.putExtra("win", false);
             db.close();
             this.startActivity(intent);
