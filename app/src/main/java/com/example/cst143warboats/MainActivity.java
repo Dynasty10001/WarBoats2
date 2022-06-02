@@ -187,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
                 if (b)
                 {
                     db.createPlayer(CurrentPlayer);
-                    db.close();
                     Intent intent = new Intent(this, PlayGame.class);
                     intent.putExtra("name", CurrentPlayer.name);
                     intent.putExtra("id", id);
@@ -195,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    db.close();
                     Intent intent = new Intent(this, PlayGame.class);
                     intent.putExtra("name", CurrentPlayer.name);
                     intent.putExtra("id", id);

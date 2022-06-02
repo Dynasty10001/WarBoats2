@@ -65,6 +65,8 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         name = b.getString("name").trim();
         long id = b.getLong("id");
+        db = new DBhelper(this);
+        db.open();
         playerList = db.getPlayerlist();
 
         if (id >0)
@@ -419,6 +421,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             intent.putExtra("name", name);
             intent.putExtra("win", true);
             intent.putExtra("shots", shotsLeft);
+            db.close();
             this.startActivity(intent);
         }
         else
@@ -426,6 +429,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
             Intent intent = new Intent(this, EndActivity.class);
             intent.putExtra("name", name);
             intent.putExtra("win", false);
+            db.close();
             this.startActivity(intent);
         }
     }
