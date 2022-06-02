@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
             //set to 7000 or 7 seconds for testing,otherwise set to 86400000 or 24 hours
             am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 86400000, pIntent);
 
-            populateSpinner();
-
         ibCamera.setOnClickListener(v -> {
 
             checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
@@ -238,22 +236,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public void populateSpinner()
-        {
-            db.open();
-            cursor = db.getAllPlayers();
-            playerList = db.getPlayerlist();
-            ArrayList<String> spinList = new ArrayList<>();
-            for (player p :playerList)
-            {
-                    spinList.add(p.id + " " + p.name);
-            }
-
-            playerSpin = findViewById(R.id.playerSpin);
-            ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinList);
-            ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            playerSpin.setAdapter(ad);
-            db.close();
-        }
 
 }
