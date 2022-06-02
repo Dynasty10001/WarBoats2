@@ -74,23 +74,7 @@ public class MainActivity extends AppCompatActivity {
             //set to 7000 or 7 seconds for testing,otherwise set to 86400000 or 24 hours
             am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 86400000, pIntent);
 
-            //////////////////////////////
-//            db.open();
-//            db.onUpgrade(db.sqlDB,0,1);
-//            db.createPlayer(new player("Cody", 1, "location"));
-//            db.createPlayer(new player("Nero", 1, "locationALT"));
-//            db.createPlayer(new player("Zuko", 1, "locationTHETHIRD"));
-//            cursor = db.getAllPlayers();
-//            playerList = new ArrayList<>();
-//            if(cursor.moveToFirst())
-//            {
-//                do {
-//                    playerList.add(cursor.getString(0) + " " + cursor.getString(1));
-//            }while(cursor.moveToNext());
-//            }
-//            populateSpinner();
-         //////////////////////////////
-
+            populateSpinner();
 
         ibCamera.setOnClickListener(v -> {
 
