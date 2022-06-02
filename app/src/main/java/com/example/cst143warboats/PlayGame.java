@@ -71,10 +71,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         if (id >0)
         {
-
-            db.open();
-            CurrentPlayer = (player) db.getPlayer(id);
-            db.close();
+            CurrentPlayer = playerList.get((int) id - 1);
         }
         else
         {
