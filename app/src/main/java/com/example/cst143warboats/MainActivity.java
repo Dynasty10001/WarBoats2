@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
 
-    ArrayList<String> playerList;
+    ArrayList<player> playerList;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //            }while(cursor.moveToNext());
 //            }
 //            populateSpinner();
+         //////////////////////////////
 
 
         ibCamera.setOnClickListener(v -> {
@@ -169,22 +170,16 @@ public class MainActivity extends AppCompatActivity {
             else {
                 db.open();
                 player CurrentPlayer = new player(etName.getText().toString().trim(), 0, Environment.getExternalStorageDirectory().toString().trim() + etName.getText().toString().trim() + "Pic.png");
-                cursor = db.getAllPlayers();
-                playerList = new ArrayList<>();
-                if(cursor.moveToFirst())
-                {
-                    do {
-                        playerList.add(cursor.getString(0) + " " + cursor.getString(1));
-                    }while(cursor.moveToNext());
-                }
+                playerList = db.getPlayerlist();
+
                 boolean b = true;
                 long id = 0;
-                for (String temp: playerList)
+                for (player player: playerList)
                 {
-                    if (CurrentPlayer.name.equals(temp))
+                    if (CurrentPlayer.name.equals(player.name))
                     {
                         b=false;
-                        id = Long.parseLong(temp.substring(0, temp.indexOf(" ")));
+                        id = player.id;
                         break;
                     }
                 }
@@ -195,14 +190,17 @@ public class MainActivity extends AppCompatActivity {
                     db.close();
                     Intent intent = new Intent(this, PlayGame.class);
                     intent.putExtra("name", CurrentPlayer.name);
+                    intent.putExtra("id", id);
                     this.startActivity(intent);
                 }
                 else
                 {
+                    db.close();
                     Intent intent = new Intent(this, PlayGame.class);
+                    intent.putExtra("name", CurrentPlayer.name);
                     intent.putExtra("id", id);
                     this.startActivity(intent);
-                    db.close();
+
                 }
 
 
@@ -244,16 +242,15 @@ public class MainActivity extends AppCompatActivity {
         {
             db.open();
             cursor = db.getAllPlayers();
-            playerList = new ArrayList<>();
-            if(cursor.moveToFirst())
+            playerList = db.getPlayerlist();
+            ArrayList<String> spinList = new ArrayList<>();
+            for (player p :playerList)
             {
-                do {
-                    playerList.add(cursor.getString(0) + " " + cursor.getString(1));
-            }while(cursor.moveToNext());
+                    spinList.add(p.id + " " + p.name);
             }
 
             playerSpin = findViewById(R.id.playerSpin);
-            ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, playerList);
+            ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinList);
             ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             playerSpin.setAdapter(ad);
             db.close();

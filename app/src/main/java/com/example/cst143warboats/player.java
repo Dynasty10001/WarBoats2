@@ -15,5 +15,12 @@ public class player implements Serializable {
         this.score = score;
         this.pic = pic;
     }
+    public player(long id, String name, int score, String pic)
+    {
+        this.id = id;
+        this.name = name;
+        this.score = score;
+        this.pic = pic;
+    }
 
 }

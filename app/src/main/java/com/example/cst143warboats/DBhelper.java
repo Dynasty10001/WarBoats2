@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBhelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Warships.db";
@@ -87,6 +89,19 @@ public class DBhelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public ArrayList<player> getPlayerlist()
+    {
+        Cursor cursor = getAllPlayers();
+        ArrayList<player> listrtn = new ArrayList<>();
+
+        if(cursor.moveToFirst()) {
+            do {
+                listrtn.add(new player(cursor.getLong(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3)));
+            } while (cursor.moveToNext());
+        }
+        return listrtn;
     }
 
 }

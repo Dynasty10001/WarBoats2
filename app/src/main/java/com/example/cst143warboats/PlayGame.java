@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +29,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
     private DBhelper db;
     private player CurrentPlayer;
+    ArrayList<player> playerList;
 
     ImageView ivShipS;
     ImageView ivShipM;
@@ -63,6 +65,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         name = b.getString("name").trim();
         long id = b.getLong("id");
+        playerList = db.getPlayerlist();
 
         if (id >0)
         {
@@ -73,7 +76,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         }
         else
         {
-
+            CurrentPlayer = playerList.get(playerList.size() -1);
         }
 
         tvBest = findViewById(R.id.tvBest);
@@ -83,7 +86,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
         tvName.setText("Capn' " + name);
         tvBest.setText("Best Score: 0");
-//        String path = Environment.getExternalStorageDirectory().toString().trim() + CurrentPlayer.name + "Pic.png";
+//        String path = CurrentPlayer.pic;
 //        Bitmap img = BitmapFactory.decodeFile(path);
 //        ivPlayerPic.setImageBitmap(img);
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
