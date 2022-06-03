@@ -28,6 +28,10 @@ public class EndActivity extends AppCompatActivity {
     private player CurrentPlayer;
     ArrayList<player> playerList;
 
+    /**
+     * This creates an end activity, either win or lose depending on the boolean coming in in the extras
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +93,9 @@ public class EndActivity extends AppCompatActivity {
         btnPlayAgain.setOnClickListener(v -> PlayAgain());
     }
 
+    /**
+     * Method for play again button
+     */
     public void PlayAgain() {
         db.close();
         Intent intent = new Intent(this, PlayGame.class);

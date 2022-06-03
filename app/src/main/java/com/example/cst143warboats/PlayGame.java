@@ -19,7 +19,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class PlayGame extends AppCompatActivity implements View.OnClickListener {
-
+    //declaring variables
     TextView tvName;
     TextView tvBest;
     TextView tvRemain;
@@ -55,6 +55,10 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
     private ImageButton[] Buttons = {ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib18,ib19,ib20,ib21,ib22,ib23,ib24,ib25,ib26,ib27,ib28,ib29,ib30,ib31,ib32,ib33,ib34,ib35,ib36,ib37,ib38,ib39,ib40,
             ib41,ib42,ib43,ib44,ib45,ib46,ib47,ib48,ib49,ib50,ib51,ib52,ib53,ib54,ib55,ib56,ib57,ib58,ib59,ib60,ib61,ib62,ib63,ib64};
 
+    /**
+     * Main onCreate for the activity, links variables to the actual buttons/images and sets click listeners for the
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,10 +93,8 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         File imgFile = new File(CurrentPlayer.pic);
 
         if(imgFile.exists()){
-
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             ivPlayerPic.setImageBitmap(myBitmap);
-
         }
 
         tvRemain.setText("Number of Shots Left: " + shotsLeft);
@@ -104,6 +106,7 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         miss = getResources().getDrawable(R.drawable.ic_sploosh);
         hit = getResources().getDrawable(R.drawable.ic_explosion);
 
+        //SO MANY BUTTONS
         Buttons[0] = findViewById(R.id.ib1);
         Buttons[1] = findViewById(R.id.ib2);
         Buttons[2] = findViewById(R.id.ib3);
@@ -178,6 +181,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    /**
+     * This method randomises both ship orientation and ship location. It also makes sure that no ships are overlapping.
+     */
     private void RandomiseLocation() {
 
 
@@ -330,6 +336,12 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         for (int i =0; i< ShipS.length; i++) { ShipS[i] = Buttons[tempS[i]]; ShipS[i].setTag(1); }
     }
 
+    /**
+     * This method is called when an image button is clicked. It finds which image button was clicked and then
+     * calls the check hit method. it then checks if all ships are sunk or shotsLeft has dropped to 0 and
+     * calls the appropriate end activity if either of these are true.
+     * @param v
+     */
     @Override
     public void onClick(View v) {
 
@@ -352,12 +364,18 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         if(!ShipLSunk){ checkShipL(); }
         if(ShipSSunk && ShipMSunk && ShipLSunk){
             EndActivity(true);
+            return;
         } else if (shotsLeft == 0)
         {
             EndActivity(false);
         }
     }
 
+    /**
+     * this method checks to see if a ship was hit and sets the appropriate image for a hit,
+     * if no ship was hit it sets the appropriate image for a miss.
+     * @param ib
+     */
     public void checkHit(ImageButton ib)
     {
 
@@ -390,6 +408,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         ib.setBackgroundColor(Color.BLUE);
     }
 
+    /**
+     * Method to check if the small ship is sunk
+     */
     public void checkShipS()
     {
         for (ImageButton ib: ShipS){
@@ -399,6 +420,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         ivShipS.setBackgroundColor(Color.RED);
     }
 
+    /**
+     * Method to check if the medium ship is sunk
+     */
     public void checkShipM()
     {
         for (ImageButton ib: ShipM){
@@ -408,6 +432,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         ivShipM.setBackgroundColor(Color.RED);
     }
 
+    /**
+     * Method to check if the large ship is sunk
+     */
     public void checkShipL()
     {
         for (ImageButton ib: ShipL){
@@ -417,6 +444,9 @@ public class PlayGame extends AppCompatActivity implements View.OnClickListener 
         ivShipL.setBackgroundColor(Color.RED);
     }
 
+    /**
+     * End activity that when given true will create a win activity, and when given false creates a lose activity
+     */
     public void EndActivity(boolean b)
     {
         if (b)

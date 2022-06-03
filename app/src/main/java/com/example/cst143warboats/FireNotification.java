@@ -22,6 +22,9 @@ public class FireNotification extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    /**
+     * This Creates a notification for the game that bugs you to keep playing.
+     */
     @Override
     public void onCreate()
     {

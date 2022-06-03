@@ -22,6 +22,10 @@ public class DBhelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     public SQLiteDatabase sqlDB;
 
+    /**
+     *This is a database helper app.
+     * @param context
+     */
     public DBhelper(Context context) { super(context, DB_NAME, null, DB_VERSION); }
 
     @Override
@@ -80,17 +84,10 @@ public class DBhelper extends SQLiteOpenHelper {
         return sqlDB.query(TABLE_NAME, sFields, null, null, null, null, null);
     }
 
-    public Cursor getPlayer(long id) throws SQLException
-    {
-        String sFields[] = new String[] {ID,NAME,SCORE,PIC};
-        Cursor cursor = sqlDB.query(TABLE_NAME, sFields, ID + " = " + id, null, null, null, null);
-        if(cursor != null)
-        {
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
-
+    /**
+     * This method is called to get an ArrayList of all players in the database.
+     * @return
+     */
     public ArrayList<player> getPlayerlist()
     {
         Cursor cursor = getAllPlayers();
